@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/calm-com/main/json-schema/calm-partner-user-schema.json",
+  "title": "Calm Partner User",
+  "description": "A user provisioned by a Calm Business or Calm Health partner via the Partner API or eligibility file.",
+  "type": "object",
+  "required": ["partner_user_id"],
+  "properties": {
+    "partner_user_id": {
+      "type": "string",
+      "description": "Unique identifier for the user within the partner's system (employee ID, member ID, or hashed email)."
+    },
+    "calm_user_id": {
+      "type": "string",
+      "description": "Calm-side user identifier returned after linking."
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "subscription_status": {
+      "type": "string",
+      "enum": ["active", "pending", "expired", "canceled", "not_found"]
+    },
+    "expires": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "segments": {
+      "type": "array",
+      "description": "Optional partner-supplied segmentation columns (up to three) used for demographic reporting.",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 3
+    },
+    "product": {
+      "type": "string",
+      "enum": ["calm-business", "calm-health"],
+      "description": "Which Calm product the user is provisioned for."
+    }
+  }
+}

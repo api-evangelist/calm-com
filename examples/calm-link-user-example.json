@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://auth.calm.com/v0/b2b/users/link",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOi...",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "partner_user_id": "emp-44219",
+      "email": "jane.doe@example.com",
+      "first_name": "Jane",
+      "last_name": "Doe"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "partner_user_id": "emp-44219",
+      "calm_user_id": "u_01HX6A7K2P",
+      "link_url": "https://www.calm.com/b2b/redeem?token=tkn_01HX6A7K2P",
+      "status": "active"
+    }
+  }
+}

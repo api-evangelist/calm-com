@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "https://auth.calm.com/v0/b2b/users/emp-44219",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOi..."
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "partner_user_id": "emp-44219",
+      "calm_user_id": "u_01HX6A7K2P",
+      "expires": "2026-12-31T23:59:59Z",
+      "status": "canceled"
+    }
+  }
+}

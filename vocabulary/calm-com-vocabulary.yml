@@ -1,0 +1,30 @@
+name: Calm Vocabulary
+description: Domain vocabulary for the Calm Business and Calm Health partner integration surface.
+terms:
+  - term: Partner
+    definition: A B2B customer of Calm (employer, health plan, or insurer) that integrates with the Partner API to provision subscriptions for its members or employees.
+  - term: Partner User
+    definition: A unique end user within a partner's system who is eligible to redeem a Calm subscription. Identified by partner_user_id.
+  - term: Calm Business
+    definition: Calm's enterprise offering for employers providing mindfulness, sleep, and meditation content to employees.
+  - term: Calm Health
+    definition: Calm's clinical mental health offering for health plans and large self-insured employers, including structured programs aligned to clinical needs.
+  - term: Eligibility File
+    definition: A CSV file uploaded via SFTP to sftp.ws.calm.com:/inbound/eligibility/ listing users eligible to redeem the Calm benefit.
+  - term: Subscription
+    definition: A Calm app entitlement granted to a partner user; can be active, expired, canceled, or not_found.
+  - term: Partner SSO
+    definition: SAML 2.0 IdP-initiated single sign-on flow where partners authenticate users into Calm using a unique SubjectNameId.
+  - term: Partner API
+    definition: REST API at auth.calm.com that provisions, links, and cancels partner-user subscriptions using OAuth 2.0 client_credentials.
+  - term: Sleep Story
+    definition: Long-form audio narrative produced by Calm to help users fall asleep, often narrated by celebrities.
+  - term: Daily Calm
+    definition: A daily 10-minute guided meditation that anchors the Calm content release cadence.
+domains:
+  - Mental Health
+  - Mindfulness
+  - Meditation
+  - Sleep
+  - Employee Wellness
+  - Digital Therapeutics

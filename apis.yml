@@ -1,0 +1,165 @@
+aid: calm-com
+name: Calm
+description: >-
+  Calm is an American digital wellness company headquartered in San Francisco
+  that builds a mobile and web app focused on mindfulness, meditation, sleep,
+  and mental health. Founded in 2012 by Michael Acton Smith and Alex Tew, Calm
+  offers guided meditations, Sleep Stories (long-form bedtime audio often
+  narrated by celebrities), breathing exercises, mindfulness courses, music
+  for focus and sleep, and a Daily Calm session. The consumer Calm app is
+  distributed through the iOS App Store and Google Play under a freemium
+  subscription model. The company also operates two B2B products. Calm
+  Business sells the consumer experience to employers as an employee wellness
+  benefit, and Calm Health is a clinical mental health offering for health
+  plans and large self-insured employers, with structured programs aligned
+  to clinical needs. Both B2B products are powered by the Calm Partner API
+  (auth.calm.com/v0), a small OAuth 2.0 client-credentials REST surface that
+  partner systems use to provision, link, and cancel Calm subscriptions for
+  their members or employees. Partners also integrate via SAML 2.0
+  IdP-initiated SSO and SFTP-uploaded eligibility files (CSV at
+  sftp.ws.calm.com:/inbound/eligibility/). Calm publishes a handful of
+  open-source utilities under github.com/calm — primarily iOS audio/video
+  helpers (PersistentStreamPlayer, KenBurns) and React-Intl ESLint plugins —
+  but there is no public consumer-facing developer API.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Mindfulness
+  - Meditation
+  - Sleep
+  - Mental Health
+  - Wellness
+  - Digital Health
+  - Mobile App
+  - Consumer
+  - Employee Wellness
+  - Digital Therapeutics
+  - B2B
+url: https://raw.githubusercontent.com/api-evangelist/calm-com/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.20'
+apis:
+  - aid: calm-com:calm-partner-api
+    name: Calm Partner API
+    description: >-
+      OAuth 2.0 client-credentials REST API used by Calm Business and Calm
+      Health partners to provision and revoke Calm subscriptions for partner
+      end users. Three operations cover the lifecycle - authorize the partner
+      service, link a partner user, and cancel a partner user subscription.
+      Credentials (client_id, client_secret) are issued by Calm's B2B
+      Engineering Team and the API is served from auth.calm.com (production)
+      and auth-ga.aws-dev.useast1.calm.com (development).
+    humanURL: https://partner.calm.com/docs/api
+    tags:
+      - Partner
+      - Subscriptions
+      - B2B
+      - Provisioning
+      - Authentication
+    properties:
+      - url: https://partner.calm.com/docs/api
+        type: Documentation
+      - url: openapi/calm-partner-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/calm-partner-user-schema.json
+        type: JSONSchema
+      - url: json-schema/calm-eligibility-file-schema.json
+        type: JSONSchema
+      - url: json-ld/calm-com-context.jsonld
+        type: JSONLD
+      - url: capabilities/partner-subscriptions.yaml
+        type: NaftikoCapability
+      - url: examples/calm-authorize-example.json
+        type: Example
+      - url: examples/calm-link-user-example.json
+        type: Example
+      - url: examples/calm-cancel-user-example.json
+        type: Example
+common:
+  - type: Website
+    url: https://www.calm.com
+  - type: Portal
+    url: https://www.calm.com
+  - type: SignUp
+    url: https://www.calm.com/signup
+  - type: Pricing
+    url: https://www.calm.com/subscribe
+  - type: Documentation
+    url: https://partner.calm.com/docs/api
+    name: Calm Partner API Docs
+  - type: Documentation
+    url: https://partner.calm.com/docs/sso
+    name: Partner SSO Integration
+  - type: Documentation
+    url: https://partner.calm.com/docs/sftp-instructions
+    name: Partner SFTP Eligibility File Instructions
+  - type: Product
+    url: https://business.calm.com
+    name: Calm Business
+  - type: Product
+    url: https://health.calm.com
+    name: Calm Health
+  - type: Product
+    url: https://app.calmhealth.com
+    name: Calm Health App
+  - type: Support
+    url: https://support.calm.com
+  - type: TermsOfService
+    url: https://www.calm.com/terms
+  - type: PrivacyPolicy
+    url: https://www.calm.com/privacy
+  - type: Blog
+    url: https://blog.calm.com
+  - type: Press
+    url: https://www.calm.com/press
+  - type: Careers
+    url: https://www.calm.com/jobs
+  - type: Contact
+    url: https://support.calm.com/hc/en-us/requests/new
+  - type: AppStoreApple
+    url: https://apps.apple.com/us/app/calm/id571800810
+  - type: AppStoreGoogle
+    url: https://play.google.com/store/apps/details?id=com.calm.android
+  - type: Twitter
+    url: https://twitter.com/calm
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/calm-com
+  - type: Instagram
+    url: https://www.instagram.com/calm
+  - type: YouTube
+    url: https://www.youtube.com/c/calm
+  - type: Facebook
+    url: https://www.facebook.com/calm.com
+  - type: GitHubOrganization
+    url: https://github.com/calm
+  - type: Features
+    data:
+      - Guided meditations across stress, anxiety, focus, and self-care libraries
+      - Sleep Stories — long-form bedtime audio narrated by well-known voices
+      - Daily Calm — a fresh 10-minute guided meditation every day
+      - Breathing exercises and breathwork programs
+      - Mindfulness and emotional-skill courses
+      - Calm Music — curated music for focus, relaxation, and sleep
+      - Calm Kids content library for children
+      - Soundscapes and nature audio
+      - Calm Business — employer-paid Calm benefit for employee wellness
+      - Calm Health — clinical mental health programs for health plans and self-insured employers
+      - Partner API with OAuth 2.0 client_credentials for subscription provisioning
+      - Partner SAML 2.0 IdP-initiated SSO with unique SubjectNameId
+      - SFTP eligibility file ingestion (CSV) at sftp.ws.calm.com:/inbound/eligibility/
+      - Partner Portal for administration, reporting, and segmentation
+      - iOS and Android apps plus a web experience at calm.com
+      - Available on Apple Watch, Apple TV, and Amazon Alexa
+    sources:
+      - https://www.calm.com
+      - https://partner.calm.com/docs/api
+      - https://partner.calm.com/docs/sso
+      - https://partner.calm.com/docs/sftp-instructions
+      - https://en.wikipedia.org/wiki/Calm_(company)
+    updated: '2026-05-25'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

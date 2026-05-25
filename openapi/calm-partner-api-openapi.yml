@@ -1,0 +1,234 @@
+openapi: 3.0.3
+info:
+  title: Calm Partner API
+  description: >-
+    Partner API for Calm Business and Calm Health partners. Provisions and
+    manages Calm subscriptions for partner end users via OAuth 2.0 client
+    credentials. Three operations cover the full subscription lifecycle:
+    authorize the partner service, link a partner user to a Calm subscription,
+    and cancel an existing subscription. Credentials are issued by Calm's B2B
+    Engineering Team.
+  version: '0'
+  contact:
+    name: Calm B2B Engineering Team
+    url: https://partner.calm.com/docs/api
+  license:
+    name: Calm Partner Terms
+    url: https://www.calm.com/terms
+servers:
+  - url: https://auth.calm.com
+    description: Production
+  - url: https://auth-ga.aws-dev.useast1.calm.com
+    description: Development
+tags:
+  - name: Authentication
+    description: OAuth 2.0 client credentials for partner services.
+  - name: Subscriptions
+    description: Provision and revoke Calm subscriptions linked to partner users.
+paths:
+  /v0/authorize:
+    post:
+      tags:
+        - Authentication
+      summary: Authorize Partner Service
+      description: >-
+        Exchange a provisioned client_id and client_secret for a short-lived
+        JWT access token. The token is required to authenticate subsequent
+        Partner API calls.
+      operationId: authorizePartner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeRequest'
+      responses:
+        '200':
+          description: Access token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+        '401':
+          description: Invalid client credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v0/b2b/users/link:
+    post:
+      tags:
+        - Subscriptions
+      summary: Link Partner User to Calm Subscription
+      description: >-
+        Provision a Calm subscription linked to a unique partner user. Returns
+        a one-time-use link that redirects the end user into the Calm
+        signup/login flow.
+      operationId: linkPartnerUser
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkUserRequest'
+      responses:
+        '200':
+          description: Subscription provisioned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkUserResponse'
+        '401':
+          description: Missing or invalid bearer token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Partner user already linked to an active subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v0/b2b/users/{partner_user_id}:
+    delete:
+      tags:
+        - Subscriptions
+      summary: Cancel Partner User Subscription
+      description: >-
+        Cancel the Calm subscription associated with a partner user so it will
+        not auto-renew. Returns the cancellation status and expiry timestamp.
+      operationId: cancelPartnerUserSubscription
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: partner_user_id
+          in: path
+          required: true
+          description: Unique identifier for the user within the partner's system.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Subscription canceled or not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelSubscriptionResponse'
+        '401':
+          description: Missing or invalid bearer token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT access token issued by POST /v0/authorize.
+  schemas:
+    AuthorizeRequest:
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - grant_type
+      properties:
+        client_id:
+          type: string
+          description: Partner client identifier issued by Calm.
+        client_secret:
+          type: string
+          description: Partner client secret issued by Calm.
+        grant_type:
+          type: string
+          enum:
+            - client_credentials
+          description: OAuth 2.0 grant type.
+    AccessToken:
+      type: object
+      required:
+        - access_token
+        - token_type
+        - expires_at
+      properties:
+        access_token:
+          type: string
+          description: JWT bearer token.
+        token_type:
+          type: string
+          enum:
+            - Bearer
+        expires_at:
+          type: integer
+          format: int64
+          description: Unix epoch seconds at which the token expires.
+        token_id:
+          type: string
+          description: Opaque identifier for the issued token.
+    LinkUserRequest:
+      type: object
+      required:
+        - partner_user_id
+      properties:
+        partner_user_id:
+          type: string
+          description: Unique identifier for the user within the partner's system.
+        email:
+          type: string
+          format: email
+          description: Optional end-user email used for the Calm account.
+        first_name:
+          type: string
+        last_name:
+          type: string
+    LinkUserResponse:
+      type: object
+      required:
+        - partner_user_id
+        - link_url
+      properties:
+        partner_user_id:
+          type: string
+        calm_user_id:
+          type: string
+          description: Calm-side user identifier.
+        link_url:
+          type: string
+          format: uri
+          description: Redirect URL that completes Calm signup/login for the user.
+        status:
+          type: string
+          enum:
+            - active
+            - pending
+    CancelSubscriptionResponse:
+      type: object
+      required:
+        - partner_user_id
+        - status
+      properties:
+        partner_user_id:
+          type: string
+        calm_user_id:
+          type: string
+        expires:
+          type: string
+          format: date-time
+          description: Timestamp at which the subscription expires.
+        status:
+          type: string
+          enum:
+            - canceled
+            - not_found
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string

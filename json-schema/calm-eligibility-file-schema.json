@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/calm-com/main/json-schema/calm-eligibility-file-schema.json",
+  "title": "Calm Eligibility File Row",
+  "description": "One row of a Calm Business or Calm Health SFTP eligibility CSV uploaded to /inbound/eligibility/ on sftp.ws.calm.com.",
+  "type": "object",
+  "required": ["unique_identifier"],
+  "properties": {
+    "unique_identifier": {
+      "type": "string",
+      "description": "Work email, employee ID, or partner-controlled stable identifier used to redeem the Calm benefit."
+    },
+    "segment_1": {
+      "type": "string",
+      "description": "Optional segmentation column for demographic reporting (e.g., region)."
+    },
+    "segment_2": {
+      "type": "string",
+      "description": "Optional segmentation column for demographic reporting (e.g., department)."
+    },
+    "segment_3": {
+      "type": "string",
+      "description": "Optional segmentation column for demographic reporting (e.g., business unit)."
+    }
+  },
+  "additionalProperties": false
+}

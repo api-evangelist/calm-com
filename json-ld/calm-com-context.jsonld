@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "calm": "https://calm.com/ns#",
+    "Provider": "schema:Organization",
+    "MobileApp": "schema:MobileApplication",
+    "Subscription": "calm:Subscription",
+    "PartnerUser": "calm:PartnerUser",
+    "EligibilityFile": "calm:EligibilityFile",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "founder": "schema:founder",
+    "foundingDate": "schema:foundingDate",
+    "headquarters": "schema:location",
+    "product": {
+      "@id": "calm:product",
+      "@type": "@id"
+    },
+    "partner_user_id": "calm:partnerUserId",
+    "calm_user_id": "calm:calmUserId",
+    "subscription_status": "calm:subscriptionStatus",
+    "expires": {
+      "@id": "calm:expires",
+      "@type": "schema:DateTime"
+    },
+    "CalmBusiness": "calm:CalmBusiness",
+    "CalmHealth": "calm:CalmHealth"
+  }
+}
