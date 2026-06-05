@@ -1,26 +1,19 @@
 aid: calm-com
 name: Calm
 description: >-
-  Calm is an American digital wellness company headquartered in San Francisco
-  that builds a mobile and web app focused on mindfulness, meditation, sleep,
-  and mental health. Founded in 2012 by Michael Acton Smith and Alex Tew, Calm
-  offers guided meditations, Sleep Stories (long-form bedtime audio often
-  narrated by celebrities), breathing exercises, mindfulness courses, music
-  for focus and sleep, and a Daily Calm session. The consumer Calm app is
-  distributed through the iOS App Store and Google Play under a freemium
-  subscription model. The company also operates two B2B products. Calm
-  Business sells the consumer experience to employers as an employee wellness
-  benefit, and Calm Health is a clinical mental health offering for health
-  plans and large self-insured employers, with structured programs aligned
-  to clinical needs. Both B2B products are powered by the Calm Partner API
-  (auth.calm.com/v0), a small OAuth 2.0 client-credentials REST surface that
-  partner systems use to provision, link, and cancel Calm subscriptions for
-  their members or employees. Partners also integrate via SAML 2.0
-  IdP-initiated SSO and SFTP-uploaded eligibility files (CSV at
-  sftp.ws.calm.com:/inbound/eligibility/). Calm publishes a handful of
-  open-source utilities under github.com/calm — primarily iOS audio/video
-  helpers (PersistentStreamPlayer, KenBurns) and React-Intl ESLint plugins —
-  but there is no public consumer-facing developer API.
+  Calm is an American digital wellness company headquartered in San Francisco that builds a mobile and web app focused
+  on mindfulness, meditation, sleep, and mental health. Founded in 2012 by Michael Acton Smith and Alex Tew, Calm offers
+  guided meditations, Sleep Stories (long-form bedtime audio often narrated by celebrities), breathing exercises,
+  mindfulness courses, music for focus and sleep, and a Daily Calm session. The consumer Calm app is distributed through
+  the iOS App Store and Google Play under a freemium subscription model. The company also operates two B2B products.
+  Calm Business sells the consumer experience to employers as an employee wellness benefit, and Calm Health is a
+  clinical mental health offering for health plans and large self-insured employers, with structured programs aligned to
+  clinical needs. Both B2B products are powered by the Calm Partner API (auth.calm.com/v0), a small OAuth 2.0
+  client-credentials REST surface that partner systems use to provision, link, and cancel Calm subscriptions for their
+  members or employees. Partners also integrate via SAML 2.0 IdP-initiated SSO and SFTP-uploaded eligibility files (CSV
+  at sftp.ws.calm.com:/inbound/eligibility/). Calm publishes a handful of open-source utilities under github.com/calm —
+  primarily iOS audio/video helpers (PersistentStreamPlayer, KenBurns) and React-Intl ESLint plugins — but there is no
+  public consumer-facing developer API.
 type: Index
 position: Provider
 access: 3rd-Party
@@ -45,13 +38,11 @@ apis:
   - aid: calm-com:calm-partner-api
     name: Calm Partner API
     description: >-
-      OAuth 2.0 client-credentials REST API used by Calm Business and Calm
-      Health partners to provision and revoke Calm subscriptions for partner
-      end users. Three operations cover the lifecycle - authorize the partner
-      service, link a partner user, and cancel a partner user subscription.
-      Credentials (client_id, client_secret) are issued by Calm's B2B
-      Engineering Team and the API is served from auth.calm.com (production)
-      and auth-ga.aws-dev.useast1.calm.com (development).
+      OAuth 2.0 client-credentials REST API used by Calm Business and Calm Health partners to provision and revoke Calm
+      subscriptions for partner end users. Three operations cover the lifecycle - authorize the partner service, link a
+      partner user, and cancel a partner user subscription. Credentials (client_id, client_secret) are issued by Calm's
+      B2B Engineering Team and the API is served from auth.calm.com (production) and auth-ga.aws-dev.useast1.calm.com
+      (development).
     humanURL: https://partner.calm.com/docs/api
     tags:
       - Partner
@@ -70,8 +61,6 @@ apis:
         type: JSONSchema
       - url: json-ld/calm-com-context.jsonld
         type: JSONLD
-      - url: capabilities/partner-subscriptions.yaml
-        type: NaftikoCapability
       - url: examples/calm-authorize-example.json
         type: Example
       - url: examples/calm-link-user-example.json
