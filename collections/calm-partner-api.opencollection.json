@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Calm Partner API",
+    "version": "0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authorize Partner Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.calm.com/v0/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange a provisioned client_id and client_secret for a short-lived JWT access token. The token is required to authenticate subsequent Partner API calls."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Link Partner User to Calm Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.calm.com/v0/b2b/users/link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Provision a Calm subscription linked to a unique partner user. Returns a one-time-use link that redirects the end user into the Calm signup/login flow."
+        },
+        {
+          "info": {
+            "name": "Cancel Partner User Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://auth.calm.com/v0/b2b/users/:partner_user_id",
+            "params": [
+              {
+                "name": "partner_user_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the user within the partner's system."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel the Calm subscription associated with a partner user so it will not auto-renew. Returns the cancellation status and expiry timestamp."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
