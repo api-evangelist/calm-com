@@ -62,17 +62,17 @@ apis:
       - url: json-ld/calm-com-context.jsonld
         type: JSONLD
       - url: examples/calm-authorize-example.json
-        type: Example
+        type: Examples
       - url: examples/calm-link-user-example.json
-        type: Example
+        type: Examples
       - url: examples/calm-cancel-user-example.json
-        type: Example
+        type: Examples
 common:
   - type: Website
     url: https://www.calm.com
   - type: Portal
     url: https://www.calm.com
-  - type: SignUp
+  - type: Signup
     url: https://www.calm.com/signup
   - type: Pricing
     url: https://www.calm.com/subscribe
