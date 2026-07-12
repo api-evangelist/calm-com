@@ -68,6 +68,10 @@ apis:
       - url: examples/calm-cancel-user-example.json
         type: Examples
 common:
+  - type: DomainSecurity
+    url: security/calm-com-domain-security.yml
+  - type: Authentication
+    url: authentication/calm-com-authentication.yml
   - type: Website
     url: https://www.calm.com
   - type: Portal
