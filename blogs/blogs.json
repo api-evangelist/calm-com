@@ -2,13 +2,14 @@
   "repo": "calm-com",
   "feeds": [
     {
-      "source": "https://blog.calm.com",
-      "feed_url": "",
-      "saved": 11,
-      "method": "agent-scrape"
+      "source": "https://www.calm.com/privacy",
+      "feed_url": "https://www.calm.com/privacy",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:30:19Z",
-  "post_count": 31,
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 41,
+  "agent_pulled": "2026-07-04"
 }
