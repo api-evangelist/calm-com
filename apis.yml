@@ -68,6 +68,8 @@ apis:
       - url: examples/calm-cancel-user-example.json
         type: Examples
 common:
+  - type: AgenticAccess
+    url: agentic-access/calm-com-agentic-access.yml
   - type: DomainSecurity
     url: security/calm-com-domain-security.yml
   - type: Authentication
