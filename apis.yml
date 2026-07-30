@@ -15,9 +15,21 @@ description: >-
   primarily iOS audio/video helpers (PersistentStreamPlayer, KenBurns) and React-Intl ESLint plugins — but there is no
   public consumer-facing developer API.
 type: Index
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/calm-com.png
 tags:
   - Mindfulness
   - Meditation
@@ -35,38 +47,52 @@ created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: calm-com:calm-partner-api
-    name: Calm Partner API
-    description: >-
-      OAuth 2.0 client-credentials REST API used by Calm Business and Calm Health partners to provision and revoke Calm
-      subscriptions for partner end users. Three operations cover the lifecycle - authorize the partner service, link a
-      partner user, and cancel a partner user subscription. Credentials (client_id, client_secret) are issued by Calm's
-      B2B Engineering Team and the API is served from auth.calm.com (production) and auth-ga.aws-dev.useast1.calm.com
-      (development).
-    humanURL: https://partner.calm.com/docs/api
-    tags:
-      - Partner
-      - Subscriptions
-      - B2B
-      - Provisioning
-      - Authentication
-    properties:
-      - url: https://partner.calm.com/docs/api
-        type: Documentation
-      - url: openapi/calm-partner-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/calm-partner-user-schema.json
-        type: JSONSchema
-      - url: json-schema/calm-eligibility-file-schema.json
-        type: JSONSchema
-      - url: json-ld/calm-com-context.jsonld
-        type: JSONLD
-      - url: examples/calm-authorize-example.json
-        type: Examples
-      - url: examples/calm-link-user-example.json
-        type: Examples
-      - url: examples/calm-cancel-user-example.json
-        type: Examples
+- aid: calm-com:calm-com-authentication-api
+  name: Calm Authentication API
+  description: OAuth 2.0 client credentials for partner services.
+  humanURL: https://partner.calm.com/docs/api
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/calm-com-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://partner.calm.com/docs/api
+  - type: JSONSchema
+    url: json-schema/calm-partner-user-schema.json
+  - type: JSONSchema
+    url: json-schema/calm-eligibility-file-schema.json
+  - type: JSONLD
+    url: json-ld/calm-com-context.jsonld
+  - type: Examples
+    url: examples/calm-authorize-example.json
+  - type: Examples
+    url: examples/calm-link-user-example.json
+  - type: Examples
+    url: examples/calm-cancel-user-example.json
+- aid: calm-com:calm-com-subscriptions-api
+  name: Calm Subscriptions API
+  description: Provision and revoke Calm subscriptions linked to partner users.
+  humanURL: https://partner.calm.com/docs/api
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/calm-com-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://partner.calm.com/docs/api
+  - type: JSONSchema
+    url: json-schema/calm-partner-user-schema.json
+  - type: JSONSchema
+    url: json-schema/calm-eligibility-file-schema.json
+  - type: JSONLD
+    url: json-ld/calm-com-context.jsonld
+  - type: Examples
+    url: examples/calm-authorize-example.json
+  - type: Examples
+    url: examples/calm-link-user-example.json
+  - type: Examples
+    url: examples/calm-cancel-user-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/calm-com-agentic-access.yml
