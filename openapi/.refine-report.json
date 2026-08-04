@@ -1,0 +1,16 @@
+{
+  "provider": "calm-com",
+  "sources": [
+    "calm-com-authentication-api-openapi.yml",
+    "calm-com-subscriptions-api-openapi.yml"
+  ],
+  "outputs": [
+    "calm-com-authentication-api-openapi.yml",
+    "calm-com-subscriptions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
